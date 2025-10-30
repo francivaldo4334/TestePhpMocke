@@ -1,0 +1,1 @@
+{"version":2,"defects":{"PatientServiceTest::testGetPatientInfoReturnsExpectedData":8,"PatientServiceTest::testThrowsExceptionWhenPatientNotFound":8},"times":{"PatientServiceTest::testGetPatientInfoReturnsExpectedData":0.011,"PatientServiceTest::testThrowsExceptionWhenPatientNotFound":0.001}}

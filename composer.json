@@ -1,0 +1,18 @@
+{
+  "name": "fran/teste-php-mocke",
+  "autoload": {
+    "psr-4": {
+      "Clinic\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "francivaldo4334",
+      "email": "francivaldodev@gmail.com"
+    }
+  ],
+  "require": {},
+  "require-dev": {
+    "phpunit/phpunit": "^10.0"
+  }
+}
