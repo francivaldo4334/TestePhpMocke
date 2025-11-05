@@ -2,12 +2,12 @@
 
 namespace Clinic\Services;
 
-use Clinic\Repository\PatientRepositoryInterface;
+use Clinic\Repository\PatientRepository;
 
 class PatientService
 {
   public function __construct(
-    private PatientRepositoryInterface $repository
+    private PatientRepository $repository
   ) {}
 
   public function getPatientInfo(string $email): array

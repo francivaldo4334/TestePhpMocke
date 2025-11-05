@@ -7,7 +7,7 @@ use Clinic\Database\Connection;
 
 use PDO;
 
-class PatientRepository implements PatientRepositoryInterface
+class PatientRepository
 {
   private PDO $db;
 
