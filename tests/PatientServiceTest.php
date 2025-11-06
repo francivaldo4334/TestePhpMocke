@@ -10,14 +10,19 @@ class PatientServiceTest extends TestCase
 
   public function testGetPatientInfoReturnsExpectedData(): void
   {
+    // CRIA SERVIÇO MOCKADO
     // $mockRepository = $this->createMock(PatientRepository::class);
 
     // $mockRepository->method("findByEmail")
     //   ->with("joao@clinic.com")
     //   ->willReturn(new Patient(1, "João da Silva", "joao@clinic.com"));
+    // CRIA SERVIÇO USANDO O BANCO DE DADOS
     $mockRepository = new PatientRepository();
     $service = new PatientService($mockRepository);
     $service->createPatient(new Patient(1, "João da Silva", "joao@clinic.com"));
+    
+
+    // EXECUTA O TESTE 
     $result = $service->getPatientInfo("joao@clinic.com");
 
     $this->assertEquals([
