@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: clinic_app
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: clinicdb
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+    volumes:
+      - ./src:/var/www/html
+    working_dir: /var/www/html
+    command: php -S 0.0.0.0:8080 -t .
+    ports:
+      - "8080:8080"
+
+  db:
+    image: postgres:16-alpine
+    container_name: clinic_db
+    restart: always
+    environment:
+      POSTGRES_DB: clinicdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  pgdata:
