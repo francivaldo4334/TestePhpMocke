@@ -2,6 +2,7 @@
 
 namespace Clinic\Services;
 
+use Clinic\Entities\Patient;
 use Clinic\Repository\PatientRepository;
 
 class PatientService
@@ -21,5 +22,8 @@ class PatientService
       "name" => $patient->getName(),
       "email" => $patient->getEmail(),
     ];
+  }
+  public function createPatient(Patient $patient){
+    return $this->repository->insertPatient($patient);
   }
 }

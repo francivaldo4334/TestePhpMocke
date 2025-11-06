@@ -6,6 +6,7 @@ use Clinic\Entities\Patient;
 use Clinic\Database\Connection;
 
 use PDO;
+use PDOException;
 
 class PatientRepository
 {
@@ -32,5 +33,21 @@ class PatientRepository
       name: $data['name'],
       email: $data['email']
     );
+  }
+  public function insertPatient(Patient $patient): bool
+  {
+    try {
+      $stmt = $this->db->prepare("
+        INSERT INTO patients (name, email)
+        VALUES (:name, :email)
+      ");
+
+      $stmt->bindValue(':name', $patient->getName());
+      $stmt->bindValue(':email', $patient->getEmail());
+
+      return $stmt->execute();
+    } catch (PDOException $e) {
+      throw new \RuntimeException("Erro ao inserir paciente: " . $e->getMessage());
+    }
   }
 }
